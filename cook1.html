@@ -1,0 +1,13 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-cookies.js"></script>
+<script>
+app=angular.module("myapp",['ngCookies'])
+app.controller("c1",function($cookies){
+$cookies.put("sno",1234)
+$cookies.put("uname","scott")
+alert($cookies.get("sno"))
+})
+</script>
+<body ng-app="myapp" ng-controller="c1">
+<a href="p1.html">Go</a>
+</body>

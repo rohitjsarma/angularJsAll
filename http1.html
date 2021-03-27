@@ -1,0 +1,16 @@
+<script src="angular.min.js"></script>
+<script src="angular-sanitize.js"></script>
+<script>
+angular.module("myapp",['ngSanitize']).controller("c1",function($http,$interval,$sce,$scope){
+	$interval(function(){
+	$http.get("score.html").then(function(dt){
+	$scope.str=$sce.trustAsHtml(dt.data)
+	})
+	},1000)
+})
+</script>
+<body ng-app="myapp" ng-controller="c1">
+<div ng-bind-html="str">
+
+</div>
+</body>

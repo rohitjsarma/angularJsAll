@@ -1,0 +1,64 @@
+<script src="angular.min.js"></script>
+<script>
+app=angular.module("myapp",[])
+app.controller("c1",function($scope){
+$scope.obj=[{
+uname:"scott",city:"hyd"
+},{
+uname:"John",city:"Sec"
+},{
+uname:"Alex",city:"Hyd"
+}]
+$scope.funins=function(){
+	$scope.obj.push({uname:$scope.t1,city:$scope.t2})
+	$scope.t1=""
+	$scope.t2=""
+	}
+	$scope.funsave=function(){
+		
+		$scope.obj[$scope.gind].uname=$scope.t11
+		$scope.obj[$scope.gind].city=$scope.t22
+		$scope.t11="";$scope.t22=""
+		}
+$scope.fundel=function(ind){
+	rv=confirm("Do tou want to delete")
+	if(rv){
+	$scope.obj.splice(ind,1)
+	}
+	}
+	$scope.funedit=function(ix){
+		$scope.gind=ix
+		$scope.t11=$scope.obj[ix].uname
+		$scope.t22=$scope.obj[ix].city
+		}
+})
+</script>
+<body ng-app="myapp" ng-controller="c1">
+<table border="1">
+<tr ng-repeat="x  in obj">
+<td>{{x.uname}}
+<td>{{x.city}}
+<td><img src="del.jpg" width="20" ng-click="fundel($index)">
+<img src="edit.jpg" width="18" ng-click="funedit($index)">
+</tr>
+</table>
+
+<div>
+<h2>Insert</h2>
+Name:<input ng-model="t1">
+<br>
+City:<input ng-model="t2">
+<br>
+<input type="button" value="Insert" ng-click="funins()">
+</div>
+<div>
+<h2>Edit</h2>
+Name:<input ng-model="t11">
+<br>
+City:<input ng-model="t22">
+<br>
+<input type="button" value="Save" ng-click="funsave()">
+</div>
+</body>
+
+
